@@ -1,0 +1,50 @@
+name: Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["android-app/**", ".github/workflows/android-apk.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: android-app/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Install Capacitor
+        working-directory: android-app
+        run: npm ci
+      - name: Generate Android project
+        working-directory: android-app
+        run: ./prepare.sh
+      - name: Build debug APK
+        working-directory: android-app/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+      - name: Collect APK
+        run: cp android-app/android/app/build/outputs/apk/debug/app-debug.apk pickit.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pickit-apk
+          path: pickit.apk
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "apk-${{ github.run_number }}" pickit.apk \
+            --target "${{ github.sha }}" \
+            --title "픽잇 Android APK #${{ github.run_number }}" \
+            --notes "디버그 서명 APK (사이드로딩용). 배포된 웹앱(pickit-six.vercel.app)을 표시하는 Capacitor 래퍼입니다. 커밋: ${{ github.sha }}"

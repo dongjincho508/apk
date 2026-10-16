@@ -1,0 +1,14 @@
+{
+  "name": "pickit-android",
+  "version": "0.1.0",
+  "private": true,
+  "description": "픽잇 Android 래퍼 (Capacitor, 배포된 웹앱을 표시)",
+  "scripts": {
+    "prepare:android": "bash ./prepare.sh"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/cli": "^6.2.0",
+    "@capacitor/core": "^6.2.0"
+  }
+}

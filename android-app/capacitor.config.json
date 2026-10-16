@@ -1,0 +1,11 @@
+{
+  "appId": "com.pickit.app",
+  "appName": "픽잇",
+  "webDir": "www",
+  "server": {
+    "url": "https://pickit-six.vercel.app",
+    "cleartext": false,
+    "allowNavigation": ["pickit-six.vercel.app"]
+  },
+  "android": { "allowMixedContent": false }
+}
