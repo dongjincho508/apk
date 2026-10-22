@@ -3,9 +3,9 @@
   "appName": "픽잇",
   "webDir": "www",
   "server": {
-    "url": "https://pickit-six.vercel.app",
+    "url": "https://pickit.insumore.co.kr",
     "cleartext": false,
-    "allowNavigation": ["pickit-six.vercel.app"]
+    "allowNavigation": ["pickit.insumore.co.kr"]
   },
   "android": { "allowMixedContent": false }
 }

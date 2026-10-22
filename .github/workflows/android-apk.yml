@@ -47,4 +47,4 @@ jobs:
           gh release create "apk-${{ github.run_number }}" pickit.apk \
             --target "${{ github.sha }}" \
             --title "픽잇 Android APK #${{ github.run_number }}" \
-            --notes "디버그 서명 APK (사이드로딩용). 배포된 웹앱(pickit-six.vercel.app)을 표시하는 Capacitor 래퍼입니다. 커밋: ${{ github.sha }}"
+            --notes "디버그 서명 APK (사이드로딩용). 배포된 웹앱(pickit.insumore.co.kr)을 표시하는 Capacitor 래퍼입니다. 커밋: ${{ github.sha }}"

@@ -1,6 +1,6 @@
 # 픽잇 Android APK
 
-[픽잇](https://pickit-six.vercel.app)(오늘 뭐 먹지?)의 Android 앱 배포 저장소입니다. 앱은 배포된 웹을 그대로 보여주는 Capacitor 래퍼이며, 웹 소스 코드는 이 저장소에 없습니다.
+[픽잇](https://pickit.insumore.co.kr)(오늘 뭐 먹지?)의 Android 앱 배포 저장소입니다. 앱은 배포된 웹을 그대로 보여주는 Capacitor 래퍼이며, 웹 소스 코드는 이 저장소에 없습니다.
 
 ## 다운로드
 **[최신 APK 받기](https://github.com/dongjincho508/apk/releases/latest/download/pickit.apk)** · [모든 버전](https://github.com/dongjincho508/apk/releases)
