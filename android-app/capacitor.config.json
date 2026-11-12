@@ -1,5 +1,5 @@
 {
-  "appId": "com.pickit.app",
+  "appId": "com.goodpickit.app",
   "appName": "픽잇",
   "webDir": "www",
   "server": {
@@ -7,5 +7,5 @@
     "cleartext": false,
     "allowNavigation": ["pickit.insumore.co.kr"]
   },
-  "android": { "allowMixedContent": false }
+  "android": { "allowMixedContent": false, "appendUserAgent": "PickitApp/1.0" }
 }

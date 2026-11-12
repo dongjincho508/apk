@@ -16,19 +16,22 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
           cache-dependency-path: android-app/package-lock.json
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
+          java-version: 21
       - name: Install Capacitor
         working-directory: android-app
         run: npm ci
       - name: Generate Android project
         working-directory: android-app
-        run: ./prepare.sh
+        run: |
+          export VERSION_CODE="${GITHUB_RUN_NUMBER}"
+          export VERSION_NAME="1.0.${GITHUB_RUN_NUMBER}"
+          ./prepare.sh
       - name: Build debug APK
         working-directory: android-app/android
         run: |
@@ -37,8 +40,10 @@ jobs:
       - name: Collect APK
         run: cp android-app/android/app/build/outputs/apk/debug/app-debug.apk pickit.apk
       - uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
           name: pickit-apk
+          retention-days: 3
           path: pickit.apk
       - name: Publish GitHub Release
         env:
@@ -47,4 +52,4 @@ jobs:
           gh release create "apk-${{ github.run_number }}" pickit.apk \
             --target "${{ github.sha }}" \
             --title "픽잇 Android APK #${{ github.run_number }}" \
-            --notes "디버그 서명 APK (사이드로딩용). 배포된 웹앱(pickit.insumore.co.kr)을 표시하는 Capacitor 래퍼입니다. 커밋: ${{ github.sha }}"
+            --notes "디버그 서명 APK (사이드로딩용, 패키지 com.goodpickit.app). pickit.insumore.co.kr 의 메뉴 추천 화면을 앱 전용으로 보여주는 Capacitor 래퍼입니다. 커밋: ${{ github.sha }}"

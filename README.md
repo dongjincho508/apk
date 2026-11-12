@@ -5,7 +5,7 @@
 ## 다운로드
 **[최신 APK 받기](https://github.com/dongjincho508/apk/releases/latest/download/pickit.apk)** · [모든 버전](https://github.com/dongjincho508/apk/releases)
 
-- 디버그 서명 APK(사이드로딩용)입니다. 설치할 때 "출처를 알 수 없는 앱" 허용이 필요합니다.
+- 디버그 서명 APK(사이드로딩용, 패키지 `com.goodpickit.app`)입니다. 설치할 때 "출처를 알 수 없는 앱" 허용이 필요합니다.
 - 위치 권한은 "내 주변 식당" 기능을 쓸 때 요청합니다.
 
 ## 빌드
